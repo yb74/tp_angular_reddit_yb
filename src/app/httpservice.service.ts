@@ -29,7 +29,11 @@ export class HttpserviceService {
     return this.client.delete<void>(`http://localhost:3000/articles/${id}`);
   }
 
-  updateArticle(article: Article): Observable<Article> {
-    return this.client.put<Article>(`http://localhost:3000/articles/${article.id}`, article);
+  updateArticle(article: Article, voteChanges: number = 0): Observable<Article> {
+    const updateData = {
+      ...article,
+      votes: article.votes
+    };
+    return this.client.put<Article>(`http://localhost:3000/articles/${article.id}`, updateData);
   }
 }

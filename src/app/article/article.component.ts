@@ -14,6 +14,7 @@ export class ArticleComponent implements OnInit {
   @Output() remove = new EventEmitter<Article>();
 
   updateMode = false;
+  voteChanges = 0;
 
   // articles!: Article[]
 
@@ -30,18 +31,14 @@ export class ArticleComponent implements OnInit {
   }
 
   voteUp(): boolean {
+    this.voteChanges++;
     this.article.votes++;
-    this.httpService.updateArticle(this.article).subscribe(updatedArticle => {
-      this.article = updatedArticle; // Update the local article with the response from the backend
-    });
     return false;
   }
   
   voteDown(): boolean {
+    this.voteChanges--;
     this.article.votes--;
-    this.httpService.updateArticle(this.article).subscribe(updatedArticle => {
-      this.article = updatedArticle; // Update the local article with the response from the backend
-    });
     return false;
   }
 
@@ -50,8 +47,9 @@ export class ArticleComponent implements OnInit {
   }
 
   saveUpdate() {
-    this.httpService.updateArticle(this.article).subscribe(updatedArticle => {
+    this.httpService.updateArticle(this.article, this.voteChanges).subscribe(updatedArticle => {
       this.article = updatedArticle;
+      this.voteChanges = 0;
       this.updateMode = false;
     });
   }
