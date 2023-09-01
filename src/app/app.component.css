@@ -1,0 +1,46 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-link-form {
+    width: 800px;
+    text-align: center;
+    background-color: aquamarine;
+    padding: 1em;
+    margin: 1em;
+}
+
+.add-link-form .form-group {
+    padding: 1em;
+}
+
+.add-link-form label {
+    padding: 10px;
+}
+
+input {
+    padding: 5px;
+}
+
+button {
+    color: white;
+    background-color:cornflowerblue;
+    padding: 1em;
+    margin: 1em;
+}
+
+button:hover {
+    color: black;
+    font-weight: bold;
+    background-color: aqua;
+}
+
+/* Article style */
+.article-item {
+    background-color: cornflowerblue;
+    padding: 10px;
+    margin: 10px;
+}

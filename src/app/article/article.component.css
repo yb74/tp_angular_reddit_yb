@@ -1,0 +1,70 @@
+.article-container {
+    text-align: center;
+}
+
+.vote-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+}
+
+.link {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+button {
+    padding: 1em;
+    margin: 1em;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: aqua;
+    color:black;
+}
+
+.vote-up-btn {
+    background-color: darkgreen;
+    color: white;
+}
+
+.vote-down-btn {
+    background-color:darkred;
+    color: white;
+}
+
+.update-btn {
+    background-color: darkgoldenrod;
+    color: white;
+}
+
+label {
+    padding: 10px;
+}
+
+input{
+    padding: 5px;
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color:aqua
+}
+
+.remove-btn {
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    background-color: red;
+}
+
+.remove-btn:hover {
+    background-color: darkred;
+    cursor: pointer;
+}
