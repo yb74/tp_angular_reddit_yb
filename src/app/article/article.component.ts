@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Article } from './article.model';
-import { HttpserviceService } from '../httpservice.service';
+import { ArticleService } from '../services/articles/article.service';
 
 @Component({
   selector: 'app-article',
@@ -17,7 +17,7 @@ export class ArticleComponent implements OnInit {
   voteChanges = 0;
 
   constructor(
-    private httpService: HttpserviceService
+    private httpService: ArticleService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class ArticleComponent implements OnInit {
     this.voteChanges++;
     this.article.votes++;
   }
-  
+
   voteDown() {
     this.voteChanges--;
     this.article.votes--;
