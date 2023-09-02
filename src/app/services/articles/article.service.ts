@@ -22,11 +22,7 @@ export class ArticleService {
     return this.http.delete(`http://localhost:3000/articles/${id}`);
   }
 
-  updateArticle(article: Article, voteChanges: number = 0): Observable<Article> {
-    const updateData = {
-      ...article,
-      votes: article.votes
-    };
-    return this.http.put<Article>(`http://localhost:3000/articles/${article.id}`, updateData);
+  updateArticle(article: Article): Observable<Article> {
+    return this.http.put<Article>(`http://localhost:3000/articles/${article.id}`, article);
   }
 }

@@ -10,8 +10,6 @@ import { ArticleService } from './services/articles/article.service';
 export class AppComponent implements OnInit {
   title = 'TP2';
   articles: Article[] = [];
-
-  updateOn = false
   selectedArticle: Article = {id: 0, votes: 0, title: 'dummy', link: 'link'}
 
   constructor(private articleService: ArticleService) {}
@@ -21,6 +19,14 @@ export class AppComponent implements OnInit {
       this.articles = res
       this.sortedArticles()
     })
+  }
+
+  modifyingVotes(event: boolean) {
+    this.sortedArticles()
+  }
+
+  sortedArticles(): Article[] {
+    return this.articles.sort((a: Article, b: Article) => b.votes - a.votes)
   }
 
   addArticle(title: string, link: string) {
@@ -38,19 +44,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  modifyingVotes(event: boolean) {
-    this.sortedArticles()
-  }
-
-  sortedArticles(): Article[] {
-    return this.articles.sort((a: Article, b: Article) => b.votes - a.votes)
-  }
-
   updateArticle(title: HTMLInputElement, link: HTMLInputElement, id: number) {
     const a = {id: id, votes: this.selectedArticle.votes, title: title.value, link: link.value}
     this.articleService.updateArticle(a).subscribe((data) => {
       this.articleService.getArticles()
     })
-    this.updateOn = false
   }
 }

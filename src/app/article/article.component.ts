@@ -7,7 +7,7 @@ import { ArticleService } from '../services/articles/article.service';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent {
 
   @Input()
   article!: Article;
@@ -23,10 +23,6 @@ export class ArticleComponent implements OnInit {
   constructor(
     private httpService: ArticleService
   ) {}
-
-  ngOnInit(): void {
-
-  }
 
   removeArticle(article: Article) {
     this.remove.emit(article);
