@@ -14,7 +14,6 @@ export class ArticleComponent implements OnInit {
   @Output() remove = new EventEmitter<Article>();
 
   updateMode = false;
-  voteChanges = 0;
 
   constructor(
     private httpService: ArticleService
@@ -29,12 +28,10 @@ export class ArticleComponent implements OnInit {
   }
 
   voteUp() {
-    this.voteChanges++;
     this.article.votes++;
   }
 
   voteDown() {
-    this.voteChanges--;
     this.article.votes--;
   }
 
@@ -43,7 +40,7 @@ export class ArticleComponent implements OnInit {
   }
 
   saveUpdate() {
-    this.httpService.updateArticle(this.article, this.voteChanges).subscribe(updatedArticle => {
+    this.httpService.updateArticle(this.article).subscribe(updatedArticle => {
       this.updateMode = false;
     });
   }
