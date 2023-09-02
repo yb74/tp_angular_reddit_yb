@@ -12,7 +12,7 @@
     <button (click)="addArticle(newTitle.value, newLink.value)">Submit link</button>
   </form>
   
-  <div class="article-item" *ngFor="let article of sortedArticles()">
-    <app-article [article]="article" (remove)="handleArticleRemoval($event)"></app-article>
+  <div class="article-item" *ngFor="let article of articles">
+    <app-article [article]="article" (remove)="handleArticleRemoval($event )" (modifyingVotes)="modifyingVotes($event)"></app-article>
   </div>
 </div>

@@ -17,8 +17,10 @@ export class AppComponent implements OnInit {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    this.articleService.getArticles().subscribe((res) => this.articles = res)
-    this.sortedArticles()
+    this.articleService.getArticles().subscribe((res) => {
+      this.articles = res
+      this.sortedArticles()
+    })
   }
 
   addArticle(title: string, link: string) {
@@ -34,6 +36,10 @@ export class AppComponent implements OnInit {
     this.articleService.deleteArticle(article.id).subscribe(() => {
       this.articles.splice(indexToRemove, 1);
     });
+  }
+
+  modifyingVotes(event: boolean) {
+    this.sortedArticles()
   }
 
   sortedArticles(): Article[] {

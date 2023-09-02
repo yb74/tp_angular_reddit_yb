@@ -11,7 +11,12 @@ export class ArticleComponent implements OnInit {
 
   @Input()
   article!: Article;
-  @Output() remove = new EventEmitter<Article>();
+
+  @Output()
+  remove = new EventEmitter<Article>();
+
+  @Output()
+  modifyingVotes = new EventEmitter<boolean>();
 
   updateMode = false;
 
@@ -29,10 +34,12 @@ export class ArticleComponent implements OnInit {
 
   voteUp() {
     this.article.votes++;
+    this.modifyingVotes.emit(true);
   }
 
   voteDown() {
     this.article.votes--;
+    this.modifyingVotes.emit(true);
   }
 
   startUpdate() {
