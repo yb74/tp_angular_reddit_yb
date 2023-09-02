@@ -11,33 +11,28 @@ export class AppComponent implements OnInit {
   title = 'TP2';
   articles: Article[] = [];
 
-  updateOn: boolean = false
-  selectedArticle: Article = new Article(5, 'dummy', 'link')
+  updateOn = false
+  selectedArticle: Article = {id: 0, votes: 0, title: 'dummy', link: 'link'}
 
   constructor(private service: HttpserviceService) {}
 
   ngOnInit() {
-    this.service.getArticles().subscribe(restArticle => this.articles = restArticle)
+    this.service.getArticles().subscribe((res) => this.articles = res)
   }
 
   addArticle(title: string, link: string) {
-    const newArticle = new Article(0, title, link);
+    const newArticle = {id: 0, votes: 0, title: title, link: link};
   
     this.service.postArticle(newArticle).subscribe((addedArticle) => {
       this.articles.push(addedArticle);
     });
-  
-    return false;
   }
 
   handleArticleRemoval(article: Article) {
     const indexToRemove = this.articles.indexOf(article);
-    if (indexToRemove !== -1) {
-      this.service.deleteArticle(article.id).subscribe(() => {
-        this.articles.splice(indexToRemove, 1);
-      });
-    }
-    return false;
+    this.service.deleteArticle(article.id).subscribe(() => {
+      this.articles.splice(indexToRemove, 1);
+    });
   }
 
   sortedArticles(): Article[] {
@@ -45,8 +40,7 @@ export class AppComponent implements OnInit {
   }
 
   updateArticle(title: HTMLInputElement, link: HTMLInputElement, id: number) {
-    const a = new Article(this.selectedArticle.votes, link.value, title.value)
-    a.id = id
+    const a = {id: id, votes: this.selectedArticle.votes, title: title.value, link: link.value}
     this.service.updateArticle(a).subscribe((data) => {
       this.service.getArticles()
     })

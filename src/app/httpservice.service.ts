@@ -13,7 +13,7 @@ export class HttpserviceService {
 
   getArticles(): Observable<Article[]> {
     return this.client.get<Article[]>('http://localhost:3000/articles').pipe(
-      map(articles => this.sortArticlesByVotes(articles))
+      map((articles) => this.sortArticlesByVotes(articles))
     );
   }
 
@@ -25,8 +25,8 @@ export class HttpserviceService {
     return this.client.post<Article>('http://localhost:3000/articles', article);
   }
 
-  deleteArticle(id: number): Observable<void> {
-    return this.client.delete<void>(`http://localhost:3000/articles/${id}`);
+  deleteArticle(id: number) {
+    return this.client.delete(`http://localhost:3000/articles/${id}`);
   }
 
   updateArticle(article: Article, voteChanges: number = 0): Observable<Article> {

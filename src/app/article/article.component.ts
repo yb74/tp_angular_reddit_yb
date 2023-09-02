@@ -16,30 +16,26 @@ export class ArticleComponent implements OnInit {
   updateMode = false;
   voteChanges = 0;
 
-  // articles!: Article[]
-
   constructor(
     private httpService: HttpserviceService
   ) {}
 
   ngOnInit(): void {
-      // this.article = new Article(0, 'Default Title', 'Default Link');
+
   }
 
   removeArticle(article: Article) {
     this.remove.emit(article);
   }
 
-  voteUp(): boolean {
+  voteUp() {
     this.voteChanges++;
     this.article.votes++;
-    return false;
   }
   
-  voteDown(): boolean {
+  voteDown() {
     this.voteChanges--;
     this.article.votes--;
-    return false;
   }
 
   startUpdate() {
@@ -48,8 +44,6 @@ export class ArticleComponent implements OnInit {
 
   saveUpdate() {
     this.httpService.updateArticle(this.article, this.voteChanges).subscribe(updatedArticle => {
-      this.article = updatedArticle;
-      this.voteChanges = 0;
       this.updateMode = false;
     });
   }
