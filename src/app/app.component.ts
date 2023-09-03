@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from './article/article.model';
 import { ArticleService } from './services/articles/article.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +13,16 @@ export class AppComponent implements OnInit {
   articles: Article[] = [];
   selectedArticle: Article = {id: 0, votes: 0, title: 'dummy', link: 'link'}
 
-  constructor(private articleService: ArticleService) {}
+  articleCreationForm = this.formBuilder.group({
+    title: ['', Validators.required],
+    link: ['', Validators.required]
+  }) 
+
+  constructor(private articleService: ArticleService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.articleService.getArticles().subscribe((res) => {
       this.articles = res
-      // this.sortedArticles()
     })
   }
 
@@ -29,12 +34,19 @@ export class AppComponent implements OnInit {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes)
   }
 
-  addArticle(title: string, link: string) {
-    const newArticle = {id: 0, votes: 0, title: title, link: link};
+  shouldShowErrorStyle(): boolean {
+    // Check if the form is invalid (has validation errors)
+    return this.articleCreationForm.invalid;
+  }
 
+  addArticle(articleCreationForm: FormGroup) {
+    const newArticle: Article = articleCreationForm.value
+    newArticle.votes = 0
     this.articleService.postArticle(newArticle).subscribe((addedArticle) => {
       this.articles.push(addedArticle);
     });
+    // Reset the form to its initial state after submission
+    this.articleCreationForm.reset();
   }
 
   handleArticleRemoval(article: Article) {

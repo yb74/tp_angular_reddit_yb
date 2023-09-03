@@ -25,17 +25,27 @@ input {
     padding: 5px;
 }
 
-button {
+.form-error-message {
+    color: red;
+    font-weight: bold;
+}
+
+.default-button {
     color: white;
     background-color:cornflowerblue;
     padding: 1em;
     margin: 1em;
+    cursor: pointer;
 }
-
-button:hover {
-    color: black;
-    font-weight: bold;
-    background-color: aqua;
+  
+  /* Disabled (error) button style */
+.error-button {
+    color: #888;
+    background-color: #ccc;
+    border: none;
+    padding: 1em;
+    margin: 1em;
+    cursor: not-allowed;
 }
 
 /* Article style */

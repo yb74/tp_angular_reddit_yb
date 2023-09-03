@@ -1,15 +1,32 @@
 <div class="main-container">
-  <form class="add-link-form">
+  <form class="add-link-form" [formGroup]="articleCreationForm" (ngSubmit)="addArticle(articleCreationForm)">
     <h3>Add a link</h3>
     <div class="form-group">
         <label for="title">Title:</label>
-        <input name="title" #newTitle>
+        <input name="title" placeholder="Enter a title" formControlName="title" required>
+
+        <div *ngIf="articleCreationForm.get('title')?.hasError('required') && articleCreationForm.get('title')?.touched" class="form-error-message">
+          Title is required.
+        </div>
     </div>
     <div class="form-group">
         <label for="link">Link:</label>
-        <input name="link" #newLink>
+        <input name="link" placeholder="Enter a link" formControlName="link" required>
+
+        <div *ngIf="articleCreationForm.get('link')?.hasError('required') && articleCreationForm.get('link')?.touched" class="form-error-message">
+          Link is required.
+        </div>
     </div>
-    <button (click)="addArticle(newTitle.value, newLink.value)">Submit link</button>
+    <button 
+      type="submit"
+      [ngClass]="{
+        'default-button': !shouldShowErrorStyle(),
+        'error-button': shouldShowErrorStyle()
+      }"
+      [disabled]="articleCreationForm.invalid"
+    >
+      Submit link
+    </button>
   </form>
   
   <div class="article-item" *ngFor="let article of articles">
