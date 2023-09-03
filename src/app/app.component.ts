@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.articleService.getArticles().subscribe((res) => {
       this.articles = res
-      this.sortedArticles()
+      // this.sortedArticles()
     })
   }
 
@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 
   updateArticle(title: HTMLInputElement, link: HTMLInputElement, id: number) {
     const a = {id: id, votes: this.selectedArticle.votes, title: title.value, link: link.value}
-    this.articleService.updateArticle(a).subscribe((data) => {
+    this.articleService.updateArticle(a).subscribe(() => {
       this.articleService.getArticles()
     })
   }

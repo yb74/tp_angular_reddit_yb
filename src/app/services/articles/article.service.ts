@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Article } from '../../article/article.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class ArticleService {
   constructor(private http: HttpClient) {}
 
   getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>('http://localhost:3000/articles')
+    return this.http.get<Article[]>('http://localhost:3000/articles').pipe(
+      map(articles => articles.sort((a: Article, b: Article) => b.votes - a.votes))
+    )
   }
 
   postArticle(article: Article) {

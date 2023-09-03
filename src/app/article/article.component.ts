@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Article } from './article.model';
 import { ArticleService } from '../services/articles/article.service';
 
@@ -43,7 +43,7 @@ export class ArticleComponent {
   }
 
   saveUpdate() {
-    this.httpService.updateArticle(this.article).subscribe(updatedArticle => {
+    this.httpService.updateArticle(this.article).subscribe(() => {
       this.updateMode = false;
     });
   }
