@@ -9,6 +9,11 @@ html, body {
   margin: 0;
 }
 
+.active-link {
+  background-color: #007bff;
+  color: #fff;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
