@@ -6,11 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ArticleCreateComponent } from './article-create/article-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleComponent
+    ArticleComponent,
+    HomepageComponent,
+    ArticleCreateComponent
   ],
   imports: [
     BrowserModule,

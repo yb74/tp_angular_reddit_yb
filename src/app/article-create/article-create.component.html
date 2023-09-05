@@ -1,0 +1,34 @@
+<div class="main-container">
+    <button routerLink="/homepage">Back to homepage</button>
+    <h1>Article creation</h1>
+
+<form class="add-link-form" [formGroup]="articleCreationForm" (ngSubmit)="addArticle(articleCreationForm)">
+    <h3>Add a link</h3>
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input name="title" placeholder="Enter a title" formControlName="title" required>
+
+        <div *ngIf="articleCreationForm.get('title')?.hasError('required') && articleCreationForm.get('title')?.touched" class="form-error-message">
+          Title is required.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="link">Link:</label>
+        <input name="link" placeholder="Enter a link" formControlName="link" required>
+
+        <div *ngIf="articleCreationForm.get('link')?.hasError('required') && articleCreationForm.get('link')?.touched" class="form-error-message">
+          Link is required.
+        </div>
+    </div>
+    <button 
+      type="submit"
+      [ngClass]="{
+        'default-button': !shouldShowErrorStyle(),
+        'error-button': shouldShowErrorStyle()
+      }"
+      [disabled]="articleCreationForm.invalid"
+    >
+      Submit link
+    </button>
+  </form>
+</div>

@@ -1,26 +1,31 @@
-<div class="article-container">
-    <div class="votes-container">
-        <div class="vote-value">{{article.votes}} Points</div>
-        <span (click)="removeArticle(article)" class="remove-btn">X</span>
-        <button class="vote-up-btn" (click)="voteUp()">Vote up</button>
-        <button class="vote-down-btn" (click)="voteDown()">Vote down</button>
-        <button class="update-btn" (click)="startUpdate()">Update</button>
-    </div>
-    <div class="votes-container">
-        <ng-container *ngIf="updateMode; else displayTitleAndLink">
-            <div class="form-group">
-                <label for="updatedTitle">Updated Title:</label>
-                <input type="text" [(ngModel)]="article.title" name="updatedTitle" id="updatedTitle">
+<div class="main-container">
+    <button routerLink="/homepage">Back to homepage</button>
+    <div class="article-item" *ngFor="let article of articles">
+        <div class="article-container">
+            <div class="votes-container">
+                <div class="vote-value">{{article.votes}} Points</div>
+                <span (click)="removeArticle(article)" class="remove-btn">X</span>
+                <button class="vote-up-btn" (click)="voteUp(article)">Vote up</button>
+                <button class="vote-down-btn" (click)="voteDown(article)">Vote down</button>
+                <button class="update-btn" (click)="startUpdate()">Update</button>
             </div>
-            <div class="form-group">
-                <label for="updatedLink">Updated Link:</label>
-                <input type="text" [(ngModel)]="article.link" name="updatedLink" id="updatedLink">
+            <div class="votes-container">
+                <ng-container *ngIf="updateMode; else displayTitleAndLink">
+                    <div class="form-group">
+                        <label for="updatedTitle">Updated Title:</label>
+                        <input type="text" [(ngModel)]="article.title" name="updatedTitle" id="updatedTitle">
+                    </div>
+                    <div class="form-group">
+                        <label for="updatedLink">Updated Link:</label>
+                        <input type="text" [(ngModel)]="article.link" name="updatedLink" id="updatedLink">
+                    </div>
+                    <button class="save-update-btn" (click)="saveUpdate()">Save</button>
+                    <button class="cancel-update-btn" (click)="cancelUpdate()">Cancel</button>
+                </ng-container>
+                <ng-template #displayTitleAndLink>
+                    <a class="link" href={{article.link}} title={{article.link}}>{{article.title}}</a>
+                </ng-template>
             </div>
-            <button class="save-update-btn" (click)="saveUpdate()">Save</button>
-            <button class="cancel-update-btn" (click)="cancelUpdate()">Cancel</button>
-        </ng-container>
-        <ng-template #displayTitleAndLink>
-            <a class="link" href={{article.link}} title={{article.link}}>{{article.title}}</a>
-        </ng-template>
+        </div>
     </div>
 </div>
