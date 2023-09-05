@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ArticleCreateComponent } from './article-create/article-create.component';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
     HomepageComponent,
-    ArticleCreateComponent
+    ArticleCreateComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

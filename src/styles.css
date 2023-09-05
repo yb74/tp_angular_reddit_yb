@@ -1,19 +1,15 @@
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Common CSS */
+
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-button {
-    padding: 1em;
-    margin: 1em;
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: aqua;
-    color:black;
 }
 
 input {

@@ -20,21 +20,6 @@
     font-weight: bold;
 }
 
-.vote-up-btn {
-    background-color: darkgreen;
-    color: white;
-}
-
-.vote-down-btn {
-    background-color:darkred;
-    color: white;
-}
-
-.update-btn {
-    background-color: darkgoldenrod;
-    color: white;
-}
-
 label {
     padding: 10px;
 }
@@ -51,16 +36,4 @@ a {
 
 a:hover {
     color:aqua
-}
-
-.remove-btn {
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    background-color: red;
-}
-
-.remove-btn:hover {
-    background-color: darkred;
-    cursor: pointer;
 }
