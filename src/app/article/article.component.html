@@ -7,10 +7,10 @@
                 <span (click)="removeArticle(article)" class="remove-btn">X</span>
                 <button class="vote-up-btn" (click)="voteUp(article)">Vote up</button>
                 <button class="vote-down-btn" (click)="voteDown(article)">Vote down</button>
-                <button class="update-btn" (click)="startUpdate()">Update</button>
+                <button class="update-btn" (click)="startUpdate(article)">Update</button>
             </div>
             <div class="votes-container">
-                <ng-container *ngIf="updateMode; else displayTitleAndLink">
+                <ng-container *ngIf="isUpdateMode(article); else displayTitleAndLink">
                     <div class="form-group">
                         <label for="updatedTitle">Updated Title:</label>
                         <input type="text" [(ngModel)]="article.title" name="updatedTitle" id="updatedTitle">
@@ -19,7 +19,7 @@
                         <label for="updatedLink">Updated Link:</label>
                         <input type="text" [(ngModel)]="article.link" name="updatedLink" id="updatedLink">
                     </div>
-                    <button class="save-update-btn" (click)="saveUpdate()">Save</button>
+                    <button class="save-update-btn" (click)="saveUpdate(article)">Save</button>
                     <button class="cancel-update-btn" (click)="cancelUpdate()">Cancel</button>
                 </ng-container>
                 <ng-template #displayTitleAndLink>

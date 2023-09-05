@@ -10,11 +10,7 @@ import { ArticleService } from '../services/articles/article.service';
 export class ArticleComponent implements OnInit {
   articles: Article[] = [];
   selectedArticle: Article = {id: 0, votes: 0, title: 'dummy', link: 'link'}
-
-  @Input()
-  article!: Article;
-
-  updateMode = false;
+  selectedArticleId: number = -1;
 
   constructor(
     private articleService: ArticleService
@@ -47,18 +43,22 @@ export class ArticleComponent implements OnInit {
     this.sortedArticles()
   }
 
-  startUpdate() {
-    this.updateMode = true;
+  startUpdate(article: Article) {
+    this.selectedArticleId = article.id;
   }
 
-  saveUpdate() {
-    this.articleService.updateArticle(this.article).subscribe(() => {
-      this.updateMode = false;
+  isUpdateMode(article: Article): boolean {
+    return this.selectedArticleId === article.id;
+  }
+
+  saveUpdate(article: Article) {
+    this.articleService.updateArticle(article).subscribe(() => {
+      this.selectedArticleId = -1;
     });
   }
 
   cancelUpdate() {
-    this.updateMode = false;
+    this.selectedArticleId = -1;
   }
 
   updateArticle(title: HTMLInputElement, link: HTMLInputElement, id: number) {

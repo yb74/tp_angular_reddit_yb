@@ -20,17 +20,6 @@
     font-weight: bold;
 }
 
-button {
-    padding: 1em;
-    margin: 1em;
-}
-
-button:hover {
-    cursor: pointer;
-    background-color: aqua;
-    color:black;
-}
-
 .vote-up-btn {
     background-color: darkgreen;
     color: white;

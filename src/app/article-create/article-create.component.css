@@ -1,0 +1,38 @@
+.add-link-form {
+    width: 800px;
+    text-align: center;
+    background-color: aquamarine;
+    padding: 1em;
+    margin: 1em;
+}
+
+.add-link-form .form-group {
+    padding: 1em;
+}
+
+.add-link-form label {
+    padding: 10px;
+}
+
+.form-error-message {
+    color: red;
+    font-weight: bold;
+}
+
+.default-button {
+    color: white;
+    background-color:cornflowerblue;
+    padding: 1em;
+    margin: 1em;
+    cursor: pointer;
+}
+  
+  /* Disabled (error) button style */
+.error-button {
+    color: #888;
+    background-color: #ccc;
+    border: none;
+    padding: 1em;
+    margin: 1em;
+    cursor: not-allowed;
+}
