@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ArticleComponent } from './article/article.component';
+import { ArticleComponent } from './article/articles-show/article.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { ArticleCreateComponent } from './article-create/article-create.component';
+import { ArticleCreateComponent } from './article/article-create/article-create.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'homepage'},

@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Article } from './article.model';
-import { ArticleService } from '../services/articles/article.service';
+import { Article } from '../article.model';
+import { ArticleService } from '../../services/articles/article.service';
 import { Observable } from 'rxjs';
-import { ToastService } from '../services/toast/toast.service';
+import { ToastService } from '../../services/toast/toast.service';
 
 @Component({
   selector: 'app-article',
@@ -31,7 +31,7 @@ export class ArticleComponent implements OnInit {
   sortedArticles(): Article[] {
     return this.articles.sort((a: Article, b: Article) => b.votes - a.votes)
   }
-  
+
   removeArticle(article: Article) {
     const indexToRemove = this.articles.indexOf(article);
     this.articleService.deleteArticle(article.id).subscribe(() => {

@@ -1,0 +1,35 @@
+
+  <div *ngIf="isToastVisible$ | async">
+      <app-toast></app-toast>
+  </div>
+
+  <h1 class="text-4xl font-bold m-5 text-center">Article creation</h1>
+
+<form class="add-link-form bg-blue-800 p-5 text-center w-96" [formGroup]="articleCreationForm" (ngSubmit)="addArticle(articleCreationForm)">
+  <div class="p-4">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="title">Title:</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="title" placeholder="Enter a title" formControlName="title" required>
+
+      <div *ngIf="articleCreationForm.get('title')?.hasError('required') && articleCreationForm.get('title')?.touched" class="form-error-message">
+        Title is required.
+      </div>
+  </div>
+  <div class="p-4">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="link">Link:</label>
+      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="link" placeholder="Enter a link" formControlName="link" required>
+
+      <div *ngIf="articleCreationForm.get('link')?.hasError('required') && articleCreationForm.get('link')?.touched" class="form-error-message">
+        Link is required.
+      </div>
+  </div>
+  <button
+    type="submit"
+    [ngClass]="{
+      'default-button': !shouldShowErrorStyle(),
+      'error-button': shouldShowErrorStyle()
+    }"
+    [disabled]="articleCreationForm.invalid"
+  >
+    Submit link
+  </button>
+</form>

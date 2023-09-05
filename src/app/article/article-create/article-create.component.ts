@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../article/article.model';
+import { Article } from '../article.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ArticleService } from '../services/articles/article.service';
-import { ToastService } from '../services/toast/toast.service';
+import { ArticleService } from '../../services/articles/article.service';
+import { ToastService } from '../../services/toast/toast.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,7 +18,7 @@ export class ArticleCreateComponent implements OnInit {
   articleCreationForm = this.formBuilder.group({
     title: ['', Validators.required],
     link: ['', Validators.required]
-  }) 
+  })
 
   constructor(private articleService: ArticleService, private toastService: ToastService, private formBuilder: FormBuilder) {
     this.isToastVisible$ = this.toastService.isToastVisible$;

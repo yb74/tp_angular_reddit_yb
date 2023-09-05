@@ -5,10 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArticleComponent } from './article/article.component';
+import { ArticleComponent } from './article/articles-show/article.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { ArticleCreateComponent } from './article-create/article-create.component';
-import { ToastComponent } from './toast/toast.component';
+import { ArticleCreateComponent } from './article/article-create/article-create.component';
+import { ToastComponent } from './shared/components/UI/toast/toast.component';
+import {FooterComponent} from "./shared/templates/footer/footer.component";
+import {HeaderComponent} from "./shared/templates/header/header.component";
 
 @NgModule({
   declarations: [
@@ -16,14 +18,16 @@ import { ToastComponent } from './toast/toast.component';
     ArticleComponent,
     HomepageComponent,
     ArticleCreateComponent,
-    ToastComponent
+    ToastComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
