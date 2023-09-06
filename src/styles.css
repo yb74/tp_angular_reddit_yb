@@ -26,3 +26,27 @@ html, body {
 input {
     padding: 5px;
 }
+
+/* form validation style */
+.form-error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.default-button {
+  color: white;
+  background-color:cornflowerblue;
+  padding: 1em;
+  margin: 1em;
+  cursor: pointer;
+}
+
+/* Disabled (error) button style */
+.error-button {
+  color: #888;
+  background-color: #ccc;
+  border: none;
+  padding: 1em;
+  margin: 1em;
+  cursor: not-allowed;
+}

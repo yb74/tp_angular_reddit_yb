@@ -11,6 +11,7 @@ import { ArticleCreateComponent } from './article/article-create/article-create.
 import { ToastComponent } from './shared/components/UI/toast/toast.component';
 import {FooterComponent} from "./shared/templates/footer/footer.component";
 import {HeaderComponent} from "./shared/templates/header/header.component";
+import { ArticleUpdateComponent } from './article-update/article-update.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HeaderComponent} from "./shared/templates/header/header.component";
     ArticleCreateComponent,
     ToastComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ArticleUpdateComponent
   ],
   imports: [
     BrowserModule,
