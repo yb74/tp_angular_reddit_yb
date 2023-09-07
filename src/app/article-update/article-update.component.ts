@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticleService } from '../services/articles/article.service';
+import { Article } from '../article/article.model';
 import { ToastService } from '../services/toast/toast.service';
 import { Observable } from 'rxjs';
 
@@ -13,6 +14,8 @@ import { Observable } from 'rxjs';
 })
 export class ArticleUpdateComponent implements OnInit {
   articleId!: string;
+  currentArticle!: Article;
+  updatedArticle!: Article;
   public isToastVisible$: Observable<boolean>;
 
   articleUpdateForm = this.formBuilder.group({
@@ -38,6 +41,18 @@ export class ArticleUpdateComponent implements OnInit {
           }, 5000);
       }
     });
+
+    this.articleService.getArticleById(this.articleId).subscribe((res) => {
+      console.log(res)
+      this.currentArticle = res
+
+      // Prefill the form controls with the current article values
+      this.articleUpdateForm.patchValue({
+        title: this.currentArticle.title,
+        link: this.currentArticle.link
+      });
+    })
+
   }
 
   shouldShowErrorStyle(): boolean {
@@ -45,6 +60,20 @@ export class ArticleUpdateComponent implements OnInit {
   }
 
   editArticle(articleUpdateForm: FormGroup) {
+    console.log(articleUpdateForm.value)
     console.log(this.articleId)
+
+    this.updatedArticle = {id: Number(this.articleId), title: articleUpdateForm.value.title, link: articleUpdateForm.value.link, votes: this.currentArticle.votes}
+
+    console.log(this.updatedArticle)
+
+    this.articleService.updateArticle(this.updatedArticle).subscribe(() => {
+      this.toastService.updateToastMessage(`Updated article with ID: ${this.articleId}`);
+      this.toastService.updateToastVisibility(true);
+        setTimeout(() => {
+          this.toastService.updateToastVisibility(false);
+        }, 5000);
+    });
+    
   }
 }

@@ -1,12 +1,10 @@
 {
   "articles": [
     {
-      "title": "modif",
-      "link": "dfgdfg",
-      "votes": 18,
       "id": 7,
-      "action": "vote-up",
-      "vote": 9
+      "title": "Updated Article2",
+      "link": "yeah",
+      "votes": 16
     },
     {
       "id": 4411312,
@@ -43,6 +41,12 @@
       "link": "ghjghj",
       "votes": 0,
       "id": 4411316
+    },
+    {
+      "title": "new article",
+      "link": "jgjgh",
+      "votes": 0,
+      "id": 4411317
     }
   ],
   "comments": [
